@@ -241,6 +241,11 @@ public class FulecoParser extends Parser {
 		return _localctx;
 	}
 
+	public ParseTree parse(){
+		return null;
+		
+	}
+	
 	public static class SentenciasContext extends ParserRuleContext {
 		public TerminalNode PATEAR() { return getToken(FulecoParser.PATEAR, 0); }
 		public SentenciaContext sentencia() {
