@@ -2,7 +2,7 @@ package fuleco;
 
 import java.util.*;
 
-public class EvalVisitor extends FulecoBaseVisitor<Value>{
+public class EvalVisitor extends Fuleco_v2BaseVisitor<Value>{
 	
 	 // used to compare floating point numbers
     public static final double SMALL_VALUE = 0.00000000001;
@@ -12,14 +12,14 @@ public class EvalVisitor extends FulecoBaseVisitor<Value>{
 
     // assignment/id overrides
     @Override
-    public Value visitAssignment(FulecoParser.AssignmentContext ctx) {
+    public Value visitAssignment(Fuleco_v2Parser.AssignmentContext ctx) {
         String id = ctx.ID().getText();
         Value value = this.visit(ctx.expr());
         return memory.put(id, value);
     }
 
     @Override
-    public Value visitIdAtom(FulecoParser.IdAtomContext ctx) {
+    public Value visitIdAtom(Fuleco_v2Parser.IdAtomContext ctx) {
         String id = ctx.getText();
         Value value = memory.get(id);
         if(value == null) {
@@ -30,7 +30,7 @@ public class EvalVisitor extends FulecoBaseVisitor<Value>{
 
     // atom overrides
     @Override
-    public Value visitStringAtom(FulecoParser.StringAtomContext ctx) {
+    public Value visitStringAtom(Fuleco_v2Parser.StringAtomContext ctx) {
         String str = ctx.getText();
         // strip quotes
         str = str.substring(1, str.length() - 1).replace("\"\"", "\"");
@@ -38,36 +38,36 @@ public class EvalVisitor extends FulecoBaseVisitor<Value>{
     }
 
     @Override
-    public Value visitNumberAtom(FulecoParser.NumberAtomContext ctx) {
+    public Value visitNumberAtom(Fuleco_v2Parser.NumberAtomContext ctx) {
         return new Value(Double.valueOf(ctx.getText()));
     }
 
     @Override
-    public Value visitBooleanAtom(FulecoParser.BooleanAtomContext ctx) {
+    public Value visitBooleanAtom(Fuleco_v2Parser.BooleanAtomContext ctx) {
         return new Value(Boolean.valueOf(ctx.getText()));
     }
 
     @Override
-    public Value visitNilAtom(FulecoParser.NilAtomContext ctx) {
+    public Value visitNilAtom(Fuleco_v2Parser.NilAtomContext ctx) {
         return new Value(null);
     }
 
     // expr overrides
     @Override
-    public Value visitParExpr(FulecoParser.ParExprContext ctx) {
+    public Value visitParExpr(Fuleco_v2Parser.ParExprContext ctx) {
         return this.visit(ctx.expr());
     }
 
    
 
     @Override
-    public Value visitUnaryMinusExpr(FulecoParser.UnaryMinusExprContext ctx) {
+    public Value visitUnaryMinusExpr(Fuleco_v2Parser.UnaryMinusExprContext ctx) {
         Value value = this.visit(ctx.expr());
         return new Value(-value.asDouble());
     }
 
     @Override
-    public Value visitNotExpr(FulecoParser.NotExprContext ctx) {
+    public Value visitNotExpr(Fuleco_v2Parser.NotExprContext ctx) {
         Value value = this.visit(ctx.expr());
         return new Value(!value.asBoolean());
     }
@@ -75,7 +75,7 @@ public class EvalVisitor extends FulecoBaseVisitor<Value>{
   
 
     @Override
-    public Value visitModExpr(FulecoParser.ModExprContext ctx) {
+    public Value visitModExpr(Fuleco_v2Parser.ModExprContext ctx) {
         Value left = this.visit(ctx.expr(0));
         Value right = this.visit(ctx.expr(1));
         return new Value(left.asDouble() % right.asDouble());
@@ -83,21 +83,21 @@ public class EvalVisitor extends FulecoBaseVisitor<Value>{
 
 
     @Override
-    public Value visitMinusExpr(FulecoParser.MinusExprContext ctx) {
+    public Value visitMinusExpr(Fuleco_v2Parser.MinusExprContext ctx) {
         Value left = this.visit(ctx.expr(0));
         Value right = this.visit(ctx.expr(1));
         return new Value(left.asDouble() - right.asDouble());
     }
 
     @Override
-    public Value visitLtExpr(FulecoParser.LtExprContext ctx) {
+    public Value visitLtExpr(Fuleco_v2Parser.LtExprContext ctx) {
         Value left = this.visit(ctx.expr(0));
         Value right = this.visit(ctx.expr(1));
         return new Value(left.asDouble() < right.asDouble());
     }
 
     @Override
-    public Value visitLteqExpr(FulecoParser.LteqExprContext ctx) {
+    public Value visitLteqExpr(Fuleco_v2Parser.LteqExprContext ctx) {
         Value left = this.visit(ctx.expr(0));
         Value right = this.visit(ctx.expr(1));
         return new Value(left.asDouble() <= right.asDouble());
@@ -105,13 +105,13 @@ public class EvalVisitor extends FulecoBaseVisitor<Value>{
 
     // if override
     
-    public Value visitIf_stat(FulecoParser.ComparacionContext ctx) {
+    public Value visitIf_stat(Fuleco_v2Parser.ComparacionContext ctx) {
 
-        List<FulecoParser.Condition_blockContext> conditions = ctx.condition_block();
+        List<Fuleco_v2Parser.Condition_blockContext> conditions = ctx.condition_block();
 
         boolean evaluatedBlock = false;
 
-        for(FulecoParser.Condition_blockContext condition : conditions) {
+        for(Fuleco_v2Parser.Condition_blockContext condition : conditions) {
 
             Value evaluated = this.visit(condition.expr());
 
@@ -132,7 +132,7 @@ public class EvalVisitor extends FulecoBaseVisitor<Value>{
     }
 
     // while override
-    public Value visitWhile_stat(FulecoParser.CicloContext ctx) {
+    public Value visitWhile_stat(Fuleco_v2Parser.CicloContext ctx) {
 
         Value value = this.visit(ctx.expr());
 
