@@ -46,8 +46,7 @@ public class Fuleco_v2Lexer extends Lexer {
 
 	public Fuleco_v2Lexer(CharStream input) {
 		super(input);
-//		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
-		_interp = new LexerATNSimulator(this,_ATN);
+		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override

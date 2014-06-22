@@ -15,6 +15,7 @@ public class Fuleco_v2Parser extends Parser {
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
+	
 	public static final int
 		SAQUE_INICIAL=1, ABRIR_LLAVE=2, CERRAR_LLAVE=3, BRASILERO=4, ALEMAN=5, 
 		JAPON=6, PARENTESIS_IZQ=7, PARENTESIS_DER=8, GAMBETEAR=9, TRUE=10, FALSE=11, 
@@ -30,6 +31,7 @@ public class Fuleco_v2Parser extends Parser {
 		"'\"'", "'!'", "'+'", "WS", "CADENA", "NUMEROS", "VARIABLE", "DIGITOS", 
 		"LETRA"
 	};
+	
 	public static final int
 		RULE_programa = 0, RULE_declaraciones = 1, RULE_declaracion = 2, RULE_tipo = 3, 
 		RULE_sentencias = 4, RULE_sentencia = 5, RULE_impr = 6, RULE_concaten = 7, 
@@ -37,6 +39,7 @@ public class Fuleco_v2Parser extends Parser {
 		RULE_expresion = 12, RULE_opIgu = 13, RULE_relacion = 14, RULE_opRel = 15, 
 		RULE_adicion = 16, RULE_opSum = 17, RULE_termino = 18, RULE_opMul = 19, 
 		RULE_primario = 20, RULE_literal = 21, RULE_entero = 22, RULE_booleano = 23;
+	
 	public static final String[] ruleNames = {
 		"programa", "declaraciones", "declaracion", "tipo", "sentencias", "sentencia", 
 		"impr", "concaten", "bloque", "asign", "comparacion", "ciclo", "expresion", 
@@ -58,8 +61,8 @@ public class Fuleco_v2Parser extends Parser {
 
 	public Fuleco_v2Parser(TokenStream input) {
 		super(input);
-//		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
-		_interp = new ParserATNSimulator(this,_ATN);
+		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
+//		_interp = new ParserATNSimulator(this,_ATN);
 	}
 	public static class ProgramaContext extends ParserRuleContext {
 		public TerminalNode PARENTESIS_IZQ() { return getToken(Fuleco_v2Parser.PARENTESIS_IZQ, 0); }
@@ -71,12 +74,14 @@ public class Fuleco_v2Parser extends Parser {
 		public SentenciasContext sentencias() {
 			return getRuleContext(SentenciasContext.class,0);
 		}
+		
 		public TerminalNode PARENTESIS_DER() { return getToken(Fuleco_v2Parser.PARENTESIS_DER, 0); }
 		public TerminalNode BRASILERO() { return getToken(Fuleco_v2Parser.BRASILERO, 0); }
 		public TerminalNode ABRIR_LLAVE() { return getToken(Fuleco_v2Parser.ABRIR_LLAVE, 0); }
 		public ProgramaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
+		
 		@Override public int getRuleIndex() { return RULE_programa; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -123,7 +128,7 @@ public class Fuleco_v2Parser extends Parser {
 	public static class DeclaracionesContext extends ParserRuleContext {
 		public List<DeclaracionContext> declaracion() {
 //			return getRuleContexts(DeclaracionContext.class);
-			return (List<DeclaracionContext>) getRuleContexts(DeclaracionContext.class);			
+			return getRuleContexts(DeclaracionContext.class);			
 		}
 		public DeclaracionContext declaracion(int i) {
 			return getRuleContext(DeclaracionContext.class,i);
@@ -208,6 +213,7 @@ public class Fuleco_v2Parser extends Parser {
 		}
 	}
 
+	
 	public final DeclaracionContext declaracion() throws RecognitionException {
 		DeclaracionContext _localctx = new DeclaracionContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_declaracion);
@@ -295,7 +301,7 @@ public class Fuleco_v2Parser extends Parser {
 	public static class SentenciasContext extends ParserRuleContext {
 		public List<SentenciaContext> sentencia() {
 //			return getRuleContexts(SentenciaContext.class);
-			return (List<SentenciaContext>) getRuleContexts(SentenciaContext.class);
+			return getRuleContexts(SentenciaContext.class);
 		}
 		public SentenciaContext sentencia(int i) {
 			return getRuleContext(SentenciaContext.class,i);
@@ -442,7 +448,7 @@ public class Fuleco_v2Parser extends Parser {
 		public TerminalNode PARENTESIS_IZQ() { return getToken(Fuleco_v2Parser.PARENTESIS_IZQ, 0); }
 		public List<ConcatenContext> concaten() {
 //			return getRuleContexts(ConcatenContext.class);
-			return (List<ConcatenContext>) getRuleContexts(ConcatenContext.class);
+			return getRuleContexts(ConcatenContext.class);
 		}
 		public TerminalNode MOSTRAR_MARCADOR() { return getToken(Fuleco_v2Parser.MOSTRAR_MARCADOR, 0); }
 		public TerminalNode FIN_LINEA() { return getToken(Fuleco_v2Parser.FIN_LINEA, 0); }
@@ -509,11 +515,11 @@ public class Fuleco_v2Parser extends Parser {
 	public static class ConcatenContext extends ParserRuleContext {
 		public List<TerminalNode> VARIABLE() { 
 //			return getTokens(Fuleco_v2Parser.VARIABLE); 
-			return (List<TerminalNode>) getTokens(Fuleco_v2Parser.VARIABLE);
+			return getTokens(Fuleco_v2Parser.VARIABLE);
 		}
 		public List<TerminalNode> CADENA() { 
 //			return getTokens(Fuleco_v2Parser.CADENA); 
-			return (List<TerminalNode>) getTokens(Fuleco_v2Parser.CADENA);
+			return getTokens(Fuleco_v2Parser.CADENA);
 		}
 		public TerminalNode CONCATENAR(int i) {
 			return getToken(Fuleco_v2Parser.CONCATENAR, i);
@@ -526,7 +532,7 @@ public class Fuleco_v2Parser extends Parser {
 		}
 		public List<TerminalNode> CONCATENAR() { 
 //			return getTokens(Fuleco_v2Parser.CONCATENAR); 
-			return (List<TerminalNode>) getTokens(Fuleco_v2Parser.CONCATENAR);
+			return getTokens(Fuleco_v2Parser.CONCATENAR);
 		}
 		public ConcatenContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -699,14 +705,14 @@ public class Fuleco_v2Parser extends Parser {
 	public static class ComparacionContext extends ParserRuleContext {
 		public List<TerminalNode> PARENTESIS_IZQ() { 
 //			return getTokens(Fuleco_v2Parser.PARENTESIS_IZQ); 
-			return (List<TerminalNode>) getTokens(Fuleco_v2Parser.CONCATENAR);
+			return getTokens(Fuleco_v2Parser.CONCATENAR);
 		}
 		public ExpresionContext expresion() {
 			return getRuleContext(ExpresionContext.class,0);
 		}
 		public List<BloqueContext> bloque() {
 //			return getRuleContexts(BloqueContext.class);
-			return (List<BloqueContext>) getRuleContexts(BloqueContext.class);
+			return getRuleContexts(BloqueContext.class);
 		}
 		public TerminalNode ARBITRO() { return getToken(Fuleco_v2Parser.ARBITRO, 0); }
 		public TerminalNode SOBORNO() { return getToken(Fuleco_v2Parser.SOBORNO, 0); }
@@ -838,7 +844,7 @@ public class Fuleco_v2Parser extends Parser {
 		}
 		public List<RelacionContext> relacion() {
 //			return getRuleContexts(RelacionContext.class);
-			return (List<RelacionContext>) getRuleContexts(RelacionContext.class);
+			return getRuleContexts(RelacionContext.class);
 		}
 		public RelacionContext relacion(int i) {
 			return getRuleContext(RelacionContext.class,i);
@@ -947,7 +953,7 @@ public class Fuleco_v2Parser extends Parser {
 	public static class RelacionContext extends ParserRuleContext {
 		public List<AdicionContext> adicion() {
 //			return getRuleContexts(AdicionContext.class);
-			return (List<AdicionContext>) getRuleContexts(AdicionContext.class);
+			return getRuleContexts(AdicionContext.class);
 		}
 		public AdicionContext adicion(int i) {
 			return getRuleContext(AdicionContext.class,i);
@@ -1059,11 +1065,11 @@ public class Fuleco_v2Parser extends Parser {
 	public static class AdicionContext extends ParserRuleContext {
 		public List<TerminoContext> termino() {
 //			return getRuleContexts(TerminoContext.class);
-			return (List<TerminoContext>) getRuleContexts(TerminoContext.class);
+			return getRuleContexts(TerminoContext.class);
 		}
 		public List<OpSumContext> opSum() {
 //			return getRuleContexts(OpSumContext.class);
-			return (List<OpSumContext>) getRuleContexts(OpSumContext.class);
+			return getRuleContexts(OpSumContext.class);
 		}
 		public OpSumContext opSum(int i) {
 			return getRuleContext(OpSumContext.class,i);
@@ -1188,7 +1194,7 @@ public class Fuleco_v2Parser extends Parser {
 	public static class TerminoContext extends ParserRuleContext {
 		public List<OpMulContext> opMul() {
 //			return getRuleContexts(OpMulContext.class);
-			return (List<OpMulContext>) getRuleContexts(OpMulContext.class);
+			return getRuleContexts(OpMulContext.class);
 		}
 		public PrimarioContext primario(int i) {
 			return getRuleContext(PrimarioContext.class,i);
@@ -1198,7 +1204,7 @@ public class Fuleco_v2Parser extends Parser {
 		}
 		public List<PrimarioContext> primario() {
 //			return getRuleContexts(PrimarioContext.class);
-			return (List<PrimarioContext>) getRuleContexts(PrimarioContext.class);
+			return getRuleContexts(PrimarioContext.class);
 		}
 		public TerminoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);

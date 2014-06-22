@@ -37,7 +37,7 @@ public class Controlador {
 		System.out.println();
 		*/
 		
-		Fuleco_v2Lexer lexer = new Fuleco_v2Lexer(new ANTLRFileStream("/Users/ian/Documents/ANTLR/fuleco/CODIGO_FULECO.txt"));
+		Fuleco_v2Lexer lexer = new Fuleco_v2Lexer(new ANTLRFileStream("C:\\Users\\Alexandra\\Desktop\\proyecto de lenguajes\\CODIGO_FULECO.txt"));
 		Fuleco_v2Parser parser = new Fuleco_v2Parser(new CommonTokenStream(lexer));
 		ParseTree tree = parser.parse();
 		EvalVisitor visitor = new EvalVisitor();
