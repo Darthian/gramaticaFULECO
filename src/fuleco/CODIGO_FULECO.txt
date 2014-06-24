@@ -1,0 +1,51 @@
+Brasilero SAQUE_INICIAL ()
+(>_<)
+
+	
+Aleman MENSAJE1 EMPATE "bottles of beer on the wall," !
+
+Aleman MENSAJE2 EMPATE "bottles of beer. Take one down and pass it around," !
+	
+Aleman MENSAJE3 EMPATE "bottles of beer on the wall." !
+	
+Aleman MENSAJEFINAL EMPATE "No more bottles of beer on the wall, no more bottles of beer. Go to the store and buy some more, 99 bottles of beer on the wall." !
+
+
+Brasilero botellas EMPATE 99!
+	
+Brasilero botellas_n!
+	
+GAMBETEAR ( botellas CARA 0 )
+	
+(>_<)
+
+botellas_n EMPATE restar(botellas , 1)!		
+		
+
+ARBITRO (botellas PENALTY 1)
+	
+	(>_<)
+			
+	MOSTRAR_MARCADOR(botellas + MENSAJEFINAL)!
+		
+	(>.<)
+
+SOBORNO
+		
+	(>_<)
+			
+	MOSTRAR_MARCADOR ( botellas + MENSAJE1 + botellas + MENSAJE2 + botellas_n + MENSAJE3 )!
+		
+	(>.<)
+	
+
+(>.<)
+	
+botellas EMPATE botellas_n!
+
+(>.<)
+
+Brasilero restar (Brasilero a, Brasilero b)
+(>_<)
+  return a QUEMAR_TIEMPO b!
+(>.<)
