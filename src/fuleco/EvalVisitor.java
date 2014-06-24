@@ -4,7 +4,7 @@ import java.util.*;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 
-public class EvalVisitor extends Fuleco_v2BaseVisitor<Value>{
+public class EvalVisitor extends Fuleco_v3BaseVisitor<Value>{
 	
 	 // used to compare floating point numbers
     public static final double SMALL_VALUE = 0.00000000001;
@@ -160,9 +160,9 @@ public class EvalVisitor extends Fuleco_v2BaseVisitor<Value>{
         return Value.VOID;
     }
 
-	public void visit(ParseTree tree) {
+	public Value visit(ParseTree tree) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 }
