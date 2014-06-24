@@ -2,6 +2,8 @@ package fuleco;
 
 import java.util.*;
 
+import org.antlr.v4.runtime.tree.ParseTree;
+
 public class EvalVisitor extends Fuleco_v2BaseVisitor<Value>{
 	
 	 // used to compare floating point numbers
@@ -157,5 +159,10 @@ public class EvalVisitor extends Fuleco_v2BaseVisitor<Value>{
 
         return Value.VOID;
     }
+
+	public void visit(ParseTree tree) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

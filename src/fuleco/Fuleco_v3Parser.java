@@ -6,6 +6,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.misc.*;
 import org.antlr.v4.runtime.tree.*;
+
 import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
@@ -1914,5 +1915,9 @@ public class Fuleco_v3Parser extends Parser {
 		for (int i = 0; i < _ATN.getNumberOfDecisions(); i++) {
 			_decisionToDFA[i] = new DFA(_ATN.getDecisionState(i), i);
 		}
+	}
+	public ParseTree parse() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
